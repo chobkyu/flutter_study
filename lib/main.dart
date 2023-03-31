@@ -10,8 +10,34 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Center(
-        child: Container(width: 50, height: 50, color:Colors.black)
+      home: Scaffold(  //상중하 구조
+        appBar: AppBar(
+          title: Text('hi')
+        ),
+        body: Row(  //가로로 배치 세로는 Column
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children :[
+            Icon(Icons.star),
+            Icon(Icons.star),
+            Icon(Icons.star)
+
+          ]
+        ),
+        bottomNavigationBar: BottomAppBar(
+
+          child: Container(
+            height: 80,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Icon(Icons.star),
+                Icon(Icons.star),
+                Icon(Icons.star)
+              ],
+            ),
+          ),
+        ),
       )
     );
   }
