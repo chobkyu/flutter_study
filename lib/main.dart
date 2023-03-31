@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         ),
         bottomNavigationBar: BottomAppBar(
 
-          child: Container(
+          child: SizedBox(
             height: 80,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
