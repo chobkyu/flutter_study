@@ -14,31 +14,19 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('hi')
         ),
-        body: Row(  //가로로 배치 세로는 Column
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children :[
-            Icon(Icons.star),
-            Icon(Icons.star),
-            Icon(Icons.star)
-
-          ]
-        ),
-        bottomNavigationBar: BottomAppBar(
-
-          child: SizedBox(
-            height: 80,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Icon(Icons.star),
-                Icon(Icons.star),
-                Icon(Icons.star)
-              ],
+        body:Center(
+          child: Container(
+            width: 50, height: 50,
+            padding: EdgeInsets.all(20),
+            decoration : BoxDecoration(
+              border : Border.all(color:Colors.black)
             ),
+            child: Text('daffds'),
           ),
+        )
+
         ),
-      )
     );
+
   }
 }
