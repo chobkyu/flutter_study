@@ -14,14 +14,11 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('hi')
         ),
-        body:Center(
-          child: Container(
-            width: 50, height: 50,
-            padding: EdgeInsets.all(20),
-            decoration : BoxDecoration(
-              border : Border.all(color:Colors.black)
-            ),
-            child: Text('daffds'),
+        body:SizedBox(
+          child:ElevatedButton(
+            child :Text('rmfwk'),
+            onPressed: (){},
+            style :ButtonStyle(),
           ),
         )
 
