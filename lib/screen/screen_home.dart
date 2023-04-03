@@ -40,6 +40,33 @@ class _HomeScreenState extends State<HomeScreen>{
           Padding(
               padding: EdgeInsets.all(width*0.048),
           ),
+          _buildStep(width, '1. 랜덤으로 나오는 퀴즈 3개를 풀어보세요'),
+          _buildStep(width, '1. 랜덤으로 나오는 퀴즈 3개를 풀어보세요'),
+          _buildStep(width, '1. 랜덤으로 나오는 퀴즈 3개를 풀어보세요'),
+
+          Padding(
+            padding : EdgeInsets.all(width * 0.048),
+          ),
+          Container(
+            padding: EdgeInsets.only(bottom:width*0.036),
+            child: Center(
+              child:ButtonTheme(
+                minWidth: width*0.8,
+                height: height*0.05,
+                shape:RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: TextButton(
+                  child:Text(
+                    '지금 퀴즈 풀기',
+                    style: TextStyle(color:Colors.white),
+                  ),
+                  onPressed:(){}
+                ),
+
+              ),
+            ),
+          )
         ]
       )
     )
