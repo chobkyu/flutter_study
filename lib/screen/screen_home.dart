@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen>{
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children:<Widget>[
-          Center(child:Image.asset('KakaoTalk_20221231_17324605.jpg'
+          Center(child:Image.asset('assets/KakaoTalk_20221231_173124605.jpg'
           ,width:width*0.8))
         ]
       )
