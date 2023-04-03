@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hiyo/screen/screen_home.dart';
 
 void main() {
   runApp(const MyApp()); //runApp : 앱 시작 함수
@@ -10,19 +11,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(  //상중하 구조
-        appBar: AppBar(
-          title: Text('hi')
-        ),
-        body:SizedBox(
-          child:ElevatedButton(
-            child :Text('rmfwk'),
-            onPressed: (){},
-            style :ButtonStyle(),
-          ),
-        )
-
-        ),
+      title:'My Quiz App',
+      home : HomeScreen(),
     );
 
   }
