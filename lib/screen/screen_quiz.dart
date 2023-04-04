@@ -1,5 +1,7 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:hiyo/widget/widget_candidate.dart';
 
 import '../model/model_quiz.dart';
 
@@ -67,10 +69,58 @@ class _QuizScreenState extends State<QuizScreen>{
                   ),
               )
 
-          )
+          ),
+          Container(
+            width: width*0.8,
+            padding: EdgeInsets.only(top:width*0.012),
+            child: AutoSizeText(
+              quiz.title,
+              textAlign: TextAlign.center,
+              maxLines:2,
+              style: TextStyle(
+                fontSize: width * 0.048,
+                fontWeight: FontWeight.bold
+              )
+            ),
+          ),
+          Expanded(child: Container(),),//빈 컨테이너 배치 이유 : 이후에 배치될 children 들이 아래에서부터 배치되도록 할 수 있음
+          Column(children: _buildCandidates(width, quiz),)
         ],
       )
 
     );
+  }
+
+  List<Widget> _buildCandidates(double width, Quiz quiz){
+    try{
+      List<Widget> _children = [];
+      for(int i = 0; i<4; i++){
+        _children.add(
+          CandWidget(
+              index: i,
+              width: width,
+              text: quiz.candidates[i],
+              answerState: _answerState[i],
+              tap:(){
+                setState(() {
+                  for(int j = 0; j<4; j++){
+                    if(j==i){
+                      _answerState[j]=true;
+                      _answers[_currentIndex] = j;
+                    }
+                    else{
+                      _answerState[j]=false;
+                    }
+                  }
+                });
+              }
+          ),
+
+        );
+      }
+    }catch(error){
+      rethrow;
+    }
+
   }
 }
