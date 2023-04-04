@@ -56,14 +56,10 @@ class _HomeScreenState extends State<HomeScreen>{
                 shape:RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: TextButton(
-                  child:Text(
-                    '지금 퀴즈 풀기',
-                    style: TextStyle(color:Colors.white),
-                  ),
-                  onPressed:(){}
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: Text("퀴즈풀기"),
                 ),
-
               ),
             ),
           )
