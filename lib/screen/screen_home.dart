@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hiyo/screen/screen_quiz.dart';
 
 import '../model/model_quiz.dart';
 
@@ -77,7 +78,14 @@ class _HomeScreenState extends State<HomeScreen>{
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context,MaterialPageRoute(
+                        builder: (context)=> QuizScreen(
+                            quizs:quizs
+                        )
+                      )
+                    );
+                  },
                   child: Text("퀴즈풀기"),
 
                 ),
