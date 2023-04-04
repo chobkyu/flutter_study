@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 
 import '../model/model_quiz.dart';
 
@@ -33,6 +34,9 @@ class _QuizScreenState extends State<QuizScreen>{
             ),
             width : width * 0.85,
             height: height * 0.5,
+            child: Swiper(
+              physics:NeverScrollableScrollPhysics()
+            ),
           ),
         )
       )
