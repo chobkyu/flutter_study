@@ -98,7 +98,12 @@ class _QuizScreenState extends State<QuizScreen>{
                     borderRadius:BorderRadius.circular(10)
                 ),
                 child:ElevatedButton(
-                  onPressed: _answers[_currentIndex] == -1 ? null : (){
+                  child: _currentIndex == widget.quizs.length-1
+                      ? Text('결과보기')
+                      :Text('다음문제'),
+                  onPressed: _answers[_currentIndex] == -1
+                    ? null
+                    : (){
                     if(_currentIndex == widget.quizs.length -1){}
                     else{
                       _answerState = [false,false,false,false];
@@ -106,9 +111,7 @@ class _QuizScreenState extends State<QuizScreen>{
                       _controller.next();
                     }
                   },
-                  child: _currentIndex == widget.quizs.length-1
-                      ? Text('결과보기')
-                      :Text('다음문제'),
+
                 )
               )
             ),
