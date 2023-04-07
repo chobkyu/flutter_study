@@ -19,6 +19,7 @@ class _QuizScreenState extends State<QuizScreen>{
   List<bool> _answerState = [false,false,false,false];//어떤 보기를 선택했는지
   int _currentIndex = 0;//몇 번 문제를 보고 있는지
 
+  SwiperController _controller = SwiperController();
   @override
   Widget build(BuildContext context){
     Size screenSize = MediaQuery.of(context).size;
@@ -37,6 +38,7 @@ class _QuizScreenState extends State<QuizScreen>{
             width : width * 0.85,
             height: height * 0.5,
             child: Swiper(
+              controller: _controller,
               physics:NeverScrollableScrollPhysics(),
               loop:false,
               itemCount:widget.quizs.length,
@@ -55,6 +57,7 @@ class _QuizScreenState extends State<QuizScreen>{
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         border:Border.all(color:Colors.white),
+        color: Colors.white
       ),
       child:Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -84,7 +87,32 @@ class _QuizScreenState extends State<QuizScreen>{
             ),
           ),
           Expanded(child: Container(),),//빈 컨테이너 배치 이유 : 이후에 배치될 children 들이 아래에서부터 배치되도록 할 수 있음
-          Column(children: _buildCandidates(width, quiz),)
+          Column(children: _buildCandidates(width, quiz),),
+          Container(
+            padding: EdgeInsets.all(width * 0.024),
+            child: Center(
+              child :ButtonTheme(
+                minWidth: width*0.5,
+                height: height*0.05,
+                shape: RoundedRectangleBorder(
+                    borderRadius:BorderRadius.circular(10)
+                ),
+                child:ElevatedButton(
+                  onPressed: _answers[_currentIndex] == -1 ? null : (){
+                    if(_currentIndex == widget.quizs.length -1){}
+                    else{
+                      _answerState = [false,false,false,false];
+                      _currentIndex +=1;
+                      _controller.next();
+                    }
+                  },
+                  child: _currentIndex == widget.quizs.length-1
+                      ? Text('결과보기')
+                      :Text('다음문제'),
+                )
+              )
+            ),
+          )
         ],
       )
 
@@ -92,8 +120,7 @@ class _QuizScreenState extends State<QuizScreen>{
   }
 
   List<Widget> _buildCandidates(double width, Quiz quiz){
-    try{
-      List<Widget> _children = [];
+    List<Widget> _children = [];
       for(int i = 0; i<4; i++){
         _children.add(
           CandWidget(
@@ -107,6 +134,7 @@ class _QuizScreenState extends State<QuizScreen>{
                     if(j==i){
                       _answerState[j]=true;
                       _answers[_currentIndex] = j;
+                      print(_answers[_currentIndex]);
                     }
                     else{
                       _answerState[j]=false;
@@ -117,10 +145,14 @@ class _QuizScreenState extends State<QuizScreen>{
           ),
 
         );
+        _children.add(
+          Padding(
+            padding: EdgeInsets.all(width * 0.024),
+          ),
+        );
       }
-    }catch(error){
-      rethrow;
-    }
+
+      return _children;
 
   }
 }
