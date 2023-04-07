@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:hiyo/screen/screen_result.dart';
 import 'package:hiyo/widget/widget_candidate.dart';
 
 import '../model/model_quiz.dart';
@@ -98,19 +99,28 @@ class _QuizScreenState extends State<QuizScreen>{
                     borderRadius:BorderRadius.circular(10)
                 ),
                 child:ElevatedButton(
-                  child: _currentIndex == widget.quizs.length-1
-                      ? Text('결과보기')
-                      :Text('다음문제'),
                   onPressed: _answers[_currentIndex] == -1
                     ? null
                     : (){
-                    if(_currentIndex == widget.quizs.length -1){}
+                    if(_currentIndex == widget.quizs.length -1){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder:(context) => ResultScreen(
+                                  answers: _answers,
+                                  quizs: widget.quizs)
+                          )
+                      );
+                    }
                     else{
                       _answerState = [false,false,false,false];
                       _currentIndex +=1;
                       _controller.next();
                     }
                   },
+                  child: _currentIndex == widget.quizs.length-1
+                      ? Text('결과보기')
+                      :Text('다음문제'),
 
                 )
               )

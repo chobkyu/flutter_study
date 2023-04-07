@@ -33,7 +33,10 @@ class _HomeScreenState extends State<HomeScreen>{
     double width = screenSize.width;
     double height = screenSize.height;
 
-    return SafeArea(child:Scaffold(appBar : AppBar(
+    return WillPopScope(
+      onWillPop: () async => false,
+      child:SafeArea(
+        child:Scaffold(appBar : AppBar(
         title:Text('My Quize App'),
         backgroundColor: Colors.deepPurple,
         leading: Container(),
@@ -94,6 +97,7 @@ class _HomeScreenState extends State<HomeScreen>{
           )
         ]
       )
+    )
     )
     );
   }
